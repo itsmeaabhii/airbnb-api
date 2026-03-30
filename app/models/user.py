@@ -1,4 +1,5 @@
 from sqlalchemy import Column, Integer, String, Boolean
+from sqlalchemy.orm import relationship
 from app.db.base import Base
 
 class User(Base):
@@ -10,3 +11,7 @@ class User(Base):
     full_name = Column(String, nullable=True)
     is_active = Column(Boolean, default=True)
     is_superuser = Column(Boolean, default=False)
+    
+    # Relationships
+    bookings = relationship("Booking", back_populates="user")
+    saved_guests = relationship("Guest", back_populates="user", foreign_keys="Guest.user_id")

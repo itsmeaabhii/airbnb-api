@@ -4,7 +4,7 @@ from fastapi.exceptions import RequestValidationError
 from app.routers import auth, users, hotels, bookings, admin, webhook, health
 from app.db.base import Base
 from app.db.session import engine
-from app.models import user, hotel  # Import models to register them
+from app.models import user, hotel, booking  # Import all models to register them
 from app.core.logging_config import setup_logging
 from app.core.middleware import setup_middleware
 from app.core.exceptions import (

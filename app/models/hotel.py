@@ -27,3 +27,7 @@ class Room(Base):
     
     hotel_id = Column(Integer, ForeignKey("hotels.id"), nullable=False)
     hotel = relationship("Hotel", back_populates="rooms")
+    
+    # Relationships for booking system
+    bookings = relationship("Booking", back_populates="room")
+    inventory = relationship("RoomInventory", back_populates="room", cascade="all, delete-orphan")
