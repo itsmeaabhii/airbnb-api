@@ -1,5 +1,5 @@
 from typing import List, Optional
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 # Room Schemas
 class RoomBase(BaseModel):
@@ -25,8 +25,7 @@ class RoomResponse(RoomBase):
     id: int
     hotel_id: int
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 # Hotel Schemas
 class HotelBase(BaseModel):
@@ -50,8 +49,7 @@ class HotelResponse(HotelBase):
     id: int
     rooms: List[RoomResponse] = []
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 class HotelList(BaseModel):
     id: int
@@ -60,5 +58,4 @@ class HotelList(BaseModel):
     description: Optional[str]
     is_active: bool
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
